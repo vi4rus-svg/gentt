@@ -1,0 +1,254 @@
+
+    :root {
+      --bg-light: #f5f7fa;
+      --text-dark: #2d3748;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --primary-btn: #10b981;
+      --primary-btn-hover: #059669;
+      --accent-color: #3b82f6;
+      --dark-bg: #1f2937;
+      --dark-card: #374151;
+      --dark-text: #e5e7eb;
+      --analysis-btn: #a855f7;
+      --analysis-btn-hover: #9333ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    body.dark-mode .card { background: var(--dark-card); }
+    body.dark-mode select, body.dark-mode input, body.dark-mode textarea {
+      background: #4b5563;
+      color: var(--dark-text);
+      border-color: #6b7280;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+      padding: 16px 24px;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+    }
+    .btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      background: var(--primary-btn);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover:not(:disabled) {
+      background: var(--primary-btn-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: pulse 0.3s ease-in-out;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .btn.loading::after {
+      content: ' ⏳';
+    }
+    .btn i {
+      margin-right: 6px;
+      transition: transform 0.2s;
+    }
+    .btn:hover i {
+      transform: scale(1.1);
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4b5563;
+    }
+    select, input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: #f9fafb;
+      color: var(--text-dark);
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    select:focus, input:focus, textarea:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      outline: none;
+    }
+    input[type="number"] {
+      appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .error::before {
+      content: '⚠️';
+    }
+    .counter {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .copy-btn, .analyze-btn {
+      margin-top: 8px;
+      padding: 8px 16px;
+      font-size: 0.875rem;
+    }
+    .copy-btn {
+      background: var(--accent-color);
+    }
+    .copy-btn:hover {
+      background: #2563eb;
+    }
+    .analyze-btn {
+      background: var(--analysis-btn);
+    }
+    .analyze-btn:hover {
+      background: var(--analysis-btn-hover);
+    }
+    .analysis {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f3f4f6;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      color: #4b5563;
+      display: none;
+    }
+    body.dark-mode .analysis {
+      background: #4b5563;
+      color: var(--dark-text);
+    }
+    .field {
+      margin-bottom: 20px;
+    }
+    .field label {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trends, .stats {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .trends h3, .stats h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .trend-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .trend-tag {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .stats canvas {
+      max-width: 100%;
+      height: 200px;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 12px;
+      display: none;
+    }
+    .progress-bar.active {
+      display: block;
+    }
+    .progress-bar div {
+      height: 100%;
+      background: linear-gradient(to right, var(--accent-color), var(--primary-btn));
+      width: 0;
+      transition: width 0.4s ease-in-out;
+    }
+    @media (min-width: 768px) {
+      .container { grid-template-columns: 1fr 1fr; }
+      .trends, .stats, form.card { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 16px; grid-template-columns: 1fr; }
+      h1 { font-size: 1.5rem; }
+      .btn { padding: 10px 16px; font-size: 0.875rem; }
+      .stats canvas { height: 150px; }
+    }
+  
